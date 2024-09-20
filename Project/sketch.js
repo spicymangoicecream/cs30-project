@@ -14,23 +14,29 @@ function setup() {
 
 function draw() {
   dayTonight();
-  Sprite()
+  Sprite();
   firstBackground();
 }
 
 function dayTonight() {
-  background(153, 255, 255)
-  if (keyPressed(mouseButton)) {
-    currentBack + 1
+  // Day to Night
+  if (currentBack === 0) {
+    background(153, 255, 255)
   }
+  if (keyIsDown(RIGHT_ARROW) && currentBack <= 3) {
+    currentBack++;
+  }
+  else {
+    currentBack === 0
   }
 
+  // Day 
 
 function Sprite() {  // The sun / Moon
   fill(225, 225, 0);
   circle(mouseX, mouseY, 100);
   }
-
+}
 
 function firstBackground() {
   //ground

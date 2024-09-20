@@ -49,4 +49,5 @@ function myForeground() {
     count+=1; 
   }
   
+
   }
