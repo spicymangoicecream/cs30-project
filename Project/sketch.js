@@ -21,7 +21,8 @@ function draw() {
   dayTonight();
   Sprite();
   firstBackground();
-  
+  textSize(30)
+  text('Henry', 550, 480)
 }
 function mousePressed() {
   if (mouseButton === CENTER) {
