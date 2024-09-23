@@ -8,35 +8,58 @@
 
 let currentBack = 0; 
 
+// Variable for Sun and Moon 
+let SunR = 255
+let SunG = 255
+let SunB = 0
 function setup() {
   createCanvas(700, 500);
 }
 
 function draw() {
+  background(153, 255, 255)
   dayTonight();
   Sprite();
   firstBackground();
+  
 }
+function mousePressed() {
+  if (mouseButton === CENTER) {
+    currentBack++;
+  }
+  if (currentBack > 3) {
+    currentBack = 0
+  }
 
+}
+ ////////////////////////////////////
 function dayTonight() {
-  // Day to Night
+ // Day to Night
   if (currentBack === 0) {
     background(153, 255, 255)
   }
-  if (keyIsDown(RIGHT_ARROW) && currentBack <= 3) {
-    currentBack++;
+  if (currentBack === 1) {
+    background(153, 204, 255)
   }
-  else {
-    currentBack === 0
+  if (currentBack === 2) {
+    background(153, 153, 255)
   }
-
-  // Day 
-
-function Sprite() {  // The sun / Moon
-  fill(225, 225, 0);
-  circle(mouseX, mouseY, 100);
+  if (currentBack === 3) {
+    background(204, 255, 255)
   }
 }
+
+function Sprite() {  // The sun / Moon
+  fill(SunR, SunG, SunB);
+  circle(mouseX, mouseY, 100);
+  if (currentBack === 2) {
+    SunR = 160; SunG = 160; SunB = 160
+  }
+  else {
+    SunR = 255; SunG = 255; SunB = 0
+  }
+  }
+
 
 function firstBackground() {
   //ground
