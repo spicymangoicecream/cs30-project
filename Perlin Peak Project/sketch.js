@@ -9,6 +9,9 @@ let rectWidth = 5;
 let rectTime = 5;
 let rectInt = 0.01;
 
+let highestY = 0;
+let rectX = 0;
+
 // Programs Start here:
 function setup() {
   createCanvas(1000, 1000);
@@ -30,6 +33,13 @@ function terrain() {
     rectHeight = map(rectHeight, 0 , 1, 60, 900);
     rect(x, height, rectWidth, -rectHeight);
     rectTime += rectInt; 
+
+    if (highestY < rectHeight) {
+      highestY = abs(rectHeight);
+      rectX = x;
+    }
+
+    drawFlag();
   }
 }
 
@@ -53,4 +63,10 @@ if (keyCode === LEFT_ARROW) {
     rectWidth = 1;
 }
 }
+}
+
+/// FLAG /// 
+function drawFlag() {
+  fill(255, 0, 0);
+  rect(rectX, height - highestY, 10, 10);
 }
