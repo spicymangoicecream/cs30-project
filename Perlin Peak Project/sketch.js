@@ -68,5 +68,5 @@ if (keyCode === LEFT_ARROW) {
 /// FLAG /// 
 function drawFlag() {
   fill(255, 0, 0);
-  rect(rectX, height - highestY, 10, 10);
+  rect(rectX, height - highestY, 10);
 }
