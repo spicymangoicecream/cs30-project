@@ -9,33 +9,91 @@ function setup() {
 }
 
 function draw() {
-  // background(255);
-  // drawBasicGrid(220);
+  background(255);
+  drawBasicGrid(220);
 
 
   //transformation one: TRANSLATION
-
+  // translate(120, 120);
+  // drawBasicGrid(150);
+  // rectangleRed(40, 20);
+  // rectangleBlue(120,20);
  
 
   //add push()  pop()
 
 
 
-
+  // translate(100,0);
   //transformation two: SCALE
+  // push();
+  // rectMode(CORNER);
+  // rectangleRed(40, 0);
+  // SCALE FACTOR
+  // 1 - no change <1 smaller >1 larger
+  // let scaleAmount = 2.5;
+  // scale(scaleAmount);
+  // drawBasicGrid(100)
+  // rectangleBlue(0,0);
+
+  // rectMode(CENTER);
+  // translate(40,40);
+  // let scaleAmount = map(mouseX, 0, width, 0,4);
+  // scale(scaleAmount);
+  // drawBasicGrid(150);
+  // rectangleRed(40,40);
+  // pop()
 
 
 
 
   //transformation three: ROTATION
   //reminder: rotations are measured in radians, not degrees! Functions can help with the conversion...
- 
+  angleMode(DEGREES);
+
+  // push()
+  // rectangleRed(20,20);
+  // translate(200,200);
+  // drawBasicGrid(180);
+  // rotate(frameCount%360);
+  // face(0,0);
+  // pop()
 
 
   //Combinations of Transformations
-
+  // push();
+  // scale(5);
+  // rotate(45);
+  // translate(100,100);
+  // face(0,0);
+  // pop();
   
 
+
+  // Drawing a circle
+  push();
+  translate(200, 200);
+  circle(0,0, 150);
+  rotate(frameCount);
+  function keyPressed(){
+    if (key = RIGHT_ARROW && numSpoke <= 10) {
+      numSpoke++;
+    }
+
+    if (key = LEFT_ARROW && numSpoke >= 1) {
+      numSpoke--;
+    }
+  }
+
+  let numSpoke = 4;
+  for(i = 0; i < numSpoke; i++) {
+    line(0, 0 , 75, 0);
+    rotate(360/numSpoke);
+  }
+
+
+
+  pop();
 }
 
 
