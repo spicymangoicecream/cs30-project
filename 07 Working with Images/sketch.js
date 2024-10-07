@@ -5,6 +5,7 @@
 
 let lionL, lionR;
 let facingRight = true;
+currentFrame = 0;
 
 function preload(){
   // run before setup, wait for loading to complete 
