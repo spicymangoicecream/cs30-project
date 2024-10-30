@@ -18,6 +18,7 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   rectWidth = width/NUM_COLS;
   rectHeight = height/NUM_ROWS;
+  randomGrid();
 }
 
 function draw() {
@@ -27,9 +28,39 @@ function draw() {
   winCond();
 }
 
-
 function winCond() {
- 
+  let win = true;
+  for (let x = 0; x < NUM_COLS; x++) {
+    for (let y = 0; y < NUM_ROWS; y++) {
+      if (gridData[y][x] !== 255 || gridData[y][x] !== 255) {
+        win = false;
+      }
+
+      else {
+        win = true;
+      }
+    }
+  }
+
+  if (win === true) {
+    fill(0,255,0);
+    textSize(40);
+    text('You Win', width/2, height/2);
+  }
+}
+
+function randomGrid() {
+  for (let x = 0; x < NUM_COLS; x++) {
+    for (let y = 0; y < NUM_ROWS; y++) {
+      if (int(random(1,3) === 1)) {
+        gridData[y][x] = 255;
+      }
+
+      else {
+        gridData[y][x] = 0;
+      }
+    }
+  }
 }
 
 function mousePressed(){
