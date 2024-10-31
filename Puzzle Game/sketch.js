@@ -2,6 +2,7 @@
 // Henry V
 // 10.29.2024
 
+let Pattern = "cross";
 let NUM_ROWS = 4;
 let NUM_COLS = 5;
 let rectWidth, rectHeight;
@@ -32,18 +33,21 @@ function winCond() {
   let win = true;
   for (let x = 0; x < NUM_COLS; x++) {
     for (let y = 0; y < NUM_ROWS; y++) {
-      if (gridData[y][x] !== 255 || gridData[y][x] !== 255) {
-        win = false;
+      if (gridData[y][x] !== gridData[0][0]) {
+        return false;
       }
 
-      else {
-        win = true;
-      }
+      // else {
+      //   win = true;
+      // }
     }
   }
 
+  win = true;
+
   if (win === true) {
     fill(0,255,0);
+    textAlign(CENTER);
     textSize(40);
     text('You Win', width/2, height/2);
   }
@@ -52,30 +56,47 @@ function winCond() {
 function randomGrid() {
   for (let x = 0; x < NUM_COLS; x++) {
     for (let y = 0; y < NUM_ROWS; y++) {
-      if (int(random(1,3) === 1)) {
-        gridData[y][x] = 255;
+      if (int(random(2)) === 1) {
+        gridData[y][x] = 0;
       }
 
       else {
-        gridData[y][x] = 0;
+        gridData[y][x] = 255;
       }
     }
   }
 }
 
 function mousePressed(){
-  if (keyIsDown(SHIFT)) {
+  if (keyIsDown(SHIFT)) { // shift function to testing for developer
     flip(currentCol, currentRow);
   }
-  else {
-    // cross-shaped pattern flips on a mouseclick. Boundary conditions are checked within the flip function to ensure in-bounds access for array
+
+  else if (Pattern === "square") {
+    flip(currentCol, currentRow);
+    flip(currentCol-1, currentRow);
+    flip(currentCol, currentRow-1);
+    flip(currentCol, currentRow+1);
+  }
+
+  else if (Pattern === "cross") {
     flip(currentCol, currentRow);
     flip(currentCol-1, currentRow);
     flip(currentCol+1, currentRow);
     flip(currentCol, currentRow-1);
     flip(currentCol, currentRow+1);
   }
+
+  // else {
+  //   // cross-shaped pattern flips on a mouseclick. Boundary conditions are checked within the flip function to ensure in-bounds access for array
+  //   flip(currentCol, currentRow);
+  //   flip(currentCol-1, currentRow);
+  //   flip(currentCol+1, currentRow);
+  //   flip(currentCol, currentRow-1);
+  //   flip(currentCol, currentRow+1);
+  // }
 }
+
 
 function flip(col, row){
   // given a column and row for the 2D array, flip its value from 0 to 255 or 255 to 0
@@ -85,6 +106,15 @@ function flip(col, row){
       if (gridData[row][col] === 0) gridData[row][col] = 255;
       else gridData[row][col] = 0;
     }
+  }
+}
+function keyPressed() {
+  if (key === 32) {
+    Pattern = "square";
+  }
+
+  else {
+    Pattern = "cross";
   }
 }
 
