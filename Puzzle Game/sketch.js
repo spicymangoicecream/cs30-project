@@ -66,26 +66,36 @@ function randomGrid() {
     }
   }
 }
-
 function mousePressed(){
-  if (keyIsDown(SHIFT)) { // shift function to testing for developer
-    flip(currentCol, currentRow);
+  if (Pattern === "cross") {
+    if (keyIsDown(SHIFT)) { // shift function to testing for developer
+      flip(currentCol, currentRow);
+    }
+    
+    else {
+      flip(currentCol, currentRow);
+      flip(currentCol-1, currentRow);
+      flip(currentCol+1, currentRow);
+      flip(currentCol, currentRow-1);
+      flip(currentCol, currentRow+1);
+    }
+  
+  }  
+
+  if (Pattern === "square")  {
+    if (keyIsDown(SHIFT)) { // shift function to testing for developer
+      flip(currentCol, currentRow);
+    }
+
+    else {
+      flip(currentCol, currentRow);
+      flip(currentCol-1, currentRow);
+      flip(currentCol-1, currentRow+1);
+      flip(currentCol, currentRow-1);
+    }
   }
 
-  else if (Pattern === "square") {
-    flip(currentCol, currentRow);
-    flip(currentCol-1, currentRow);
-    flip(currentCol, currentRow-1);
-    flip(currentCol, currentRow+1);
-  }
 
-  else if (Pattern === "cross") {
-    flip(currentCol, currentRow);
-    flip(currentCol-1, currentRow);
-    flip(currentCol+1, currentRow);
-    flip(currentCol, currentRow-1);
-    flip(currentCol, currentRow+1);
-  }
 
   // else {
   //   // cross-shaped pattern flips on a mouseclick. Boundary conditions are checked within the flip function to ensure in-bounds access for array
@@ -110,11 +120,13 @@ function flip(col, row){
 }
 function keyPressed() {
   if (key === 32) {
-    Pattern = "square";
-  }
+    if (Pattern === "cross") {
+      Pattern = "square";
+    }
 
-  else {
-    Pattern = "cross";
+    else if (Pattern === "square") {
+      Pattern = "cross";
+    }
   }
 }
 
